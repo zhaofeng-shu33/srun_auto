@@ -8,8 +8,6 @@ import time
 from srun_base64 import get_base64
 from srun_xencode import get_xencode
 
-from pathlib import Path
-
 ROOT_URL = 'invalid'
 n = '200'
 type = '1'
@@ -27,7 +25,7 @@ def get_root_url_inner():
 
 def get_root_url():
     global ROOT_URL
-    home = str(Path.home())
+    home = os.path.expanduser('~')
     config_file = os.path.join(home, '.srun.config')
     if(os.path.exists(config_file)):
         with open(config_file) as f:
